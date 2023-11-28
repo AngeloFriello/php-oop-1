@@ -1,45 +1,46 @@
 <?php
 
 class Production{
+
     public $title;
     public $leanguage;
     public $rating;
     
-    function __construct(String $_title, $_leanguage, $_rating) {
-
-        $this->title = $_title;
+    function __construct($_title, $_leanguage, $_rating) {
+        $this->setTitle($_title);
         $this->leanguage = $_leanguage;
-        $this->rating = $_rating;
-
+        $this->setRating($_rating);
     }
 
-    public function setTitle($title){
+    public function setTitle($title) {
         if(is_string($title)){
             $this->title = $title;
-        }else{
-            $this->title = 'undefined';
-            var_dump('undefined');
         }
     }
 
-    public function setAge($rating)
-    {
-    if (is_numeric($rating) && $rating >= 0) {
-      $this->rating = intval($rating);
-    } else {
-      $this->rating = 0;
-      var_dump('Il parametro $rating non è corretto');
+    public function setRating($rating)  {
+        if (is_numeric($rating) && $rating >= 0) {
+            $this->rating = intval($rating);
+        } else {
+            $this->rating = 0;
+            var_dump('Il parametro $rating non è corretto');
+        }
     }
-  }
 }
 
-$rambo = new Production('Rambo','English','5');
+$rambo = new Production(456,'English','5');
 $rocky = new Production('Rocky','English','4');
 $commando = new Production('Commando','Italiano','3');
 $ritorno_al_futuro = new Production('Ritorno al futuro','English','5');
 
+$film = [
+    $rambo,
+    $rocky,
+    $commando,
+    $ritorno_al_futuro,
+];
 
-var_dump($rambo)
+// var_dump($rambo);
 
 ?>
 <!DOCTYPE html>
@@ -50,15 +51,13 @@ var_dump($rambo)
     <title>Document</title>
 </head>
 <body>
-    <?php
-        foreach($film as $production){
-            ?>
-            <div>
-                <h3> <?php $production->title ?></h3>
-            </div>
-            <?php
-        }
-    ?>
+    <?php foreach($film as $production) { ?>
+        <div>
+            <h3> <?php echo $production->title ?></h3>
+            <p> <?php echo $production->leanguage?></p>
+            <p> <?php echo $production->rating ?></p>
+        </div>
+    <?php } ?>
 </body>
 </html>
 
