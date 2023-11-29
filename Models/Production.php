@@ -1,27 +1,27 @@
 <?php
+class Production
+{
 
-require_once __DIR__ . '/Movie.php';
-require_once __DIR__ . '/Serie.php';
- 
-class Production{
+    public $title;
+    public $leanguage;
+    public $rating;
 
-public $title;
-public $leanguage;
-public $rating;
-
-    function __construct($_title, $_leanguage, $_rating, ) {
+    function __construct($_title, $_leanguage, $_rating)
+    {
         $this->setTitle($_title);
         $this->leanguage = $_leanguage;
         $this->setRating($_rating);
     }
 
-    public function setTitle($title) {
-        if(is_string($title)){
+    public function setTitle($title)
+    {
+        if (is_string($title)) {
             $this->title = $title;
         }
     }
 
-    public function setRating($rating) {
+    public function setRating($rating)
+    {
         if (is_numeric($rating) && $rating >= 0) {
             $this->rating = intval($rating);
         } else {
@@ -31,10 +31,7 @@ public $rating;
     }
 }
 
-$rambo = new Production(456,'English','5');
-$rocky = new Production('Rocky','English','4');
-$commando = new Production('Commando','Italiano','3');
-$ritorno_al_futuro = new Production('Ritorno al futuro','English','5');
-
-
-?>
+$rambo = new Production('Rambo', 'English', '5');
+$rocky = new Production('Rocky', 'English', '5');
+$commando = new Production('Commando', 'English', '5');
+$ritorno_al_futuro = new Production('Ritorno al Futuro', 'English', '5');

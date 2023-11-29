@@ -1,25 +1,29 @@
 <?php
 
-class Movie{
+require_once __DIR__ . '/Production.php';
 
-public $profit;
-public $duration;
+class Movie extends Production
+{
 
+    public $profit;
+    public $duration;
 
-    function __construct($_profit, $_duration,) {
-
+    public function __construct($_title, $_leanguage, $_rating, $_duration, $_profit) {
+        parent::__construct($_title, $_leanguage, $_rating);
+        $this->setDuration($_duration);   
         $this->profit = $_profit;
-        $this->duration = $_duration;
-        
     }
 
-    
+    public function setDuration($_duration)
+  {
+    $this->duration = $_duration;
+  }
+
+   
 }
-
-$rambo = new Production(456,'English','5');
-$rocky = new Production('Rocky','English','4');
-$commando = new Production('Commando','Italiano','3');
-$ritorno_al_futuro = new Production('Ritorno al futuro','English','5');
-
-
+$ritorno_al_crimine = new Movie('Ritorno al Crimine', 'Italiano', '3','120min','4milioni');
+$la_dura_verita = new Movie('Rambo', 'English', '5','120min','4milioni');
+$non_ci_resta_che_piangere = new Movie('Rocky', 'English', '5','120min','4milioni');
+$commandiamo_noi = new Movie('Commando', 'English', '5','120min','4milioni');
+$ritorno_al_passato = new Movie('Ritorno al Futuro', 'English', '5','120min','4milioni');
 ?>
